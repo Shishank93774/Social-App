@@ -3,12 +3,15 @@ import SearchIcon from "@mui/icons-material/Search";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import PersonIcon from "@mui/icons-material/Person";
 import ChatIcon from "@mui/icons-material/Chat";
+import { Link } from "react-router-dom";
 
 const Topbar = () => {
   return (
     <div className="topbarContainer">
       <div className="topbarLeft">
-        <span className="topbarLogo">Hanksy</span>
+        <Link to="/" style={{textDecoration:'none'}}>
+          <span className="topbarLogo">Hanksy</span>
+        </Link>
       </div>
       <div className="topbarCenter">
         <div className="searchbar">

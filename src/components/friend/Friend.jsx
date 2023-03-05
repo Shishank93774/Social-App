@@ -1,8 +1,9 @@
 import "./friend.css";
 const Friend = ({user}) => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
     <li className="sidebarFriend">
-      <img src={user.profileImg} alt="" className="sidebarFriendImg" />
+      <img src={PF+user.profileImg} alt="" className="sidebarFriendImg" />
       <span className="sidebarFriendName">{user.username}</span>
     </li>
   );

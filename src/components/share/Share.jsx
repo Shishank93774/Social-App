@@ -1,16 +1,29 @@
+import { useState, useEffect } from "react";
 import "./share.css";
 import PermMediaIcon from '@mui/icons-material/PermMedia';
 import LabelIcon from '@mui/icons-material/Label';
 import RoomIcon from '@mui/icons-material/Room';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
+import axios from "axios";
 
-const Share = () => {
+const Share = ({username}) => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = username ? await axios.get(`/users?username=${username}`) : await axios.get(`/users?username=Gese Zimmermann`);
+      setUser(res.data)
+    }
+    fetchUser();
+  },[username]);
+  
   return (
     <div className="shareContainer">
       <div className="shareWrapper">
         <div className="shareTop">
-            <img src="assets/person/4.jpg" alt="" className="shareProfileImg" />
-            <input placeholder="What's in your mind?" className="shareInput" />
+            <img src={PF + user.profileImg} alt="" className="shareProfileImg" />
+            <input placeholder={`What's in your mind ${username}?`} className="shareInput" />
         </div>
         <hr className="shareHr" />
         <div className="shareBottom">

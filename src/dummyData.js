@@ -1,57 +1,57 @@
 export const Users = [
   {
     id:1,
-    profileImg: "assets/person/1.jpg",
+    profileImg: "person/1.jpg",
     username: "Ray Barson",
   },
   {
     id:2,
-    profileImg: "assets/person/2.jpg",
+    profileImg: "person/2.jpg",
     username: "Jessica Holmes",
   },
   {
     id:3,
-    profileImg: "assets/person/3.jpg",
+    profileImg: "person/3.jpg",
     username: "John Fisher",
   },
   {
     id:4,
-    profileImg: "assets/person/4.jpg",
+    profileImg: "person/4.jpg",
     username: "Gese Zimmermann",
   },
   {
     id:5,
-    profileImg: "assets/person/5.jpg",
+    profileImg: "person/5.jpg",
     username: "Thomas Holden",
   },
   {
     id:6,
-    profileImg: "assets/person/6.jpg",
+    profileImg: "person/6.jpg",
     username: "Shirley Beauchamp",
   },
   {
     id:7,
-    profileImg: "assets/person/7.jpg",
+    profileImg: "person/7.jpg",
     username: "Selena Potts",
   },
   {
     id:8,
-    profileImg: "assets/person/8.jpg",
+    profileImg: "person/8.jpg",
     username: "Kristen Thomas",
   },
   {
     id:9,
-    profileImg: "assets/person/9.jpg",
+    profileImg: "person/9.jpg",
     username: "Gary Duty",
   },
   {
     id:10,
-    profileImg: "assets/person/10.jpg",
+    profileImg: "person/10.jpg",
     username: "Laurie Price",
   },
   {
     id:11,
-    profileImg: "assets/person/11.jpg",
+    profileImg: "person/11.jpg",
     username: "Leah Berrotti",
   },
 ];
@@ -60,7 +60,7 @@ export const Posts = [
   {
     id: 1,
     desc: "My motive from now on.",
-    photo: "assets/post/1.jpg",
+    photo: "post/1.jpg",
     date: "5 mins ago",
     userId: 5,
     like: 41,
@@ -69,7 +69,7 @@ export const Posts = [
   {
     id: 2,
     desc: "Love what I have!!",
-    photo: "assets/post/2.jpg",
+    photo: "post/2.jpg",
     date: "15 mins ago",
     userId: 11,
     like: 78,
@@ -78,7 +78,7 @@ export const Posts = [
   {
     id: 3,
     desc: "Every moment is a fresh beginning.",
-    photo: "assets/post/3.jpg",
+    photo: "post/3.jpg",
     date: "1 hour ago",
     userId: 7,
     like: 42,
@@ -87,7 +87,7 @@ export const Posts = [
   {
     id: 4,
     desc: "Ready for what to come!",
-    photo: "assets/post/4.jpg",
+    photo: "post/4.jpg",
     date: "4 hours ago",
     userId: 9,
     like: 17,
@@ -95,7 +95,7 @@ export const Posts = [
   },
   {
     id: 5,
-    photo: "assets/post/5.jpg",
+    photo: "post/5.jpg",
     date: "5 hours ago",
     userId: 7,
     like: 23,
@@ -104,7 +104,7 @@ export const Posts = [
   {
     id: 6,
     desc: "running, running and running away!!!",
-    photo: "assets/post/6.jpg",
+    photo: "post/6.jpg",
     date: "1 day ago",
     userId: 10,
     like: 414,
@@ -113,7 +113,7 @@ export const Posts = [
   {
     id: 7,
     desc: "Enjoying life how it is!!",
-    photo: "assets/post/7.jpg",
+    photo: "post/7.jpg",
     date: "2 days ago",
     userId: 4,
     like: 122,
@@ -122,7 +122,7 @@ export const Posts = [
   {
     id: 8,
     desc: "life right now is just: \"WORK WORK WORK\" !!",
-    photo: "assets/post/8.jpg",
+    photo: "post/8.jpg",
     date: "3 days ago",
     userId: 4,
     like: 115,
@@ -131,7 +131,7 @@ export const Posts = [
   {
     id: 9,
     desc: "Change the world by being yourself.",
-    photo: "assets/post/9.jpg",
+    photo: "post/9.jpg",
     date: "5 days ago",
     userId: 5,
     like: 121,
@@ -139,7 +139,7 @@ export const Posts = [
   },
   {
     id: 10,
-    photo: "assets/post/10.jpg",
+    photo: "post/10.jpg",
     date: "1 week ago",
     userId: 10,
     like: 104,
@@ -148,7 +148,7 @@ export const Posts = [
   {
     id: 11,
     desc: "Just do what it says.",
-    photo: "assets/post/11.jpg",
+    photo: "post/11.jpg",
     date: "1 week ago",
     userId: 8,
     like: 141,
