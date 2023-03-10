@@ -1,55 +1,59 @@
-import { useState, useEffect } from 'react';
-import "./profile.css";
-import Feed from "../../components/feed/Feed";
-import Rightbar from "../../components/rightbar/Rightbar";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Topbar from "../../components/topbar/Topbar";
-import axios from 'axios';
-import { useParams } from 'react-router';
+import { Box, useMediaQuery } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import Navbar from "pages/navbar/navbar";
+import FollowingListWidget from "pages/widgets/FollowingListWidget";
+import MyPostWidget from "pages/widgets/MyPostWidget";
+import PostsWidget from "pages/widgets/PostsWidget";
+import UserWidget from "pages/widgets/UserWidget";
 
 const Profile = () => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const [user, setUser] = useState({});
-  const params = useParams();
+  const [user, setUser] = useState(null);
+  const { userId } = useParams();
+  const token = useSelector((state) => state.token);
+  const isNonMobileScreens = useMediaQuery("(min-width:1000px)");
+
+  const getUser = async () => {
+    const response = await fetch(`http://localhost:3001/users/${userId}`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const data = await response.json();
+    setUser(data);
+  };
 
   useEffect(() => {
-    const fetchUser = async () => {
-      const res = await axios.get(`/users?username=${params.username}`);
-      setUser(res.data);
-    };
-    fetchUser();
-  }, [params.username]);
+    getUser();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  if (!user) return null;
+
   return (
-    <>
-      <Topbar />
-      <div className="profileContainer">
-        <Sidebar />
-        <div className="profileRight">
-          <div className="profileRightTop">
-            <div className="profileCover">
-              <img
-                src={PF + user.coverImg || PF + "cover/noCover.jpg"}
-                alt=""
-                className="profileCoverImg"
-              />
-              <img
-                src={PF + user.profileImg || PF + "person/noAvatar.jpg"}
-                alt=""
-                className="profileUserImg"
-              />
-            </div>
-            <div className="profileInfo">
-              <h4 className="profileInfoName">{user.username}</h4>
-              <span className="profileInfoDesc">{user.desc}</span>
-            </div>
-          </div>
-          <div className="profileRightBottom">
-            <Feed username={params.username} />
-            <Rightbar user={user} />
-          </div>
-        </div>
-      </div>
-    </>
+    <Box>
+      <Navbar />
+      <Box
+        width="100%"
+        padding="2rem 6%"
+        display={isNonMobileScreens ? "flex" : "block"}
+        gap="2rem"
+        justifyContent="center"
+      >
+        <Box flexBasis={isNonMobileScreens ? "26%" : undefined}>
+          <UserWidget userId={userId} profileImg={user.profileImg} />
+          <Box m="2rem 0" />
+          <FollowingListWidget userId={userId} />
+        </Box>
+        <Box
+          flexBasis={isNonMobileScreens ? "42%" : undefined}
+          mt={isNonMobileScreens ? undefined : "2rem"}
+        >
+          <MyPostWidget profileImg={user.profileImg} />
+          <Box m="2rem 0" />
+          <PostsWidget userId={userId} isProfile={true} />
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

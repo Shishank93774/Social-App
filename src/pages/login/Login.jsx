@@ -1,27 +1,42 @@
-import './login.css'
+import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
+import Form from "./Form";
 
 const Login = () => {
-  return (
-    <div className="loginContainer">
-        <div className="loginWrapper">
-            <div className="loginLeft">
-                <h3 className="loginLogo">Hansky</h3>
-                <span className="loginDesc">Stay connected and never miss a beat with Hansky.</span>
-            </div>
-            <div className="loginRight">
-                <div className="loginBox">
-                    <div className="loginBox">
-                        <input placeholder="Email" className="loginInput" />
-                        <input placeholder="Password" className="loginInput" />
-                        <button className="loginButton">Log In</button>
-                        <span className="loginForgot">Forgot Password?</span>
-                        <button className="loginRegisterButton">Create a New Account</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  )
-}
+  const theme = useTheme();
+  const isNonMobileScreens = useMediaQuery("(min-width: 1000px)");
 
-export default Login
+  return (
+    <Box>
+      <Box
+        width="100%"
+        backgroundColor={theme.palette.background.alt}
+        p="1rem 6%"
+        textAlign="center"
+      >
+        <Typography fontWeight={"bold"} fontSize="32px" color="primary">
+          Hansky
+        </Typography>
+      </Box>
+      <Box
+        width={isNonMobileScreens ? "50%" : "93%"}
+        p="2rem"
+        margin="2rem auto"
+        borderRadius="1.5rem"
+        backgroundColor={theme.palette.background.alt}
+      >
+        <Typography
+          fontWeight={"500"}
+          variant="h5"
+          sx={{
+            mb: "1.5rem",
+          }}
+        >
+          Stay connected and never miss a beat with Hansky.
+        </Typography>
+        <Form />
+      </Box>
+    </Box>
+  );
+};
+
+export default Login;

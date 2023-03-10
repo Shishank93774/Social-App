@@ -9,10 +9,10 @@ import axios from "axios";
 const Share = ({username}) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [user, setUser] = useState({});
-
+  username = username || "Gese Zimmermann";
   useEffect(() => {
     const fetchUser = async () => {
-      const res = username ? await axios.get(`/users?username=${username}`) : await axios.get(`/users?username=Gese Zimmermann`);
+      const res = await axios.get(`/users?username=${username}`);
       setUser(res.data)
     }
     fetchUser();

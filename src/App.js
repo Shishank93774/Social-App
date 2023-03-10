@@ -1,34 +1,44 @@
-import Home from './pages/home/Home';
-import Profile from './pages/profile/Profile';
-import Login from './pages/login/Login';
-import Register from './pages/register/Register';
 import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+  BrowserRouter as Router,
+  Routes,
+  Navigate,
+  Route
+} from 'react-router-dom';
+import Home from 'pages/home/home';
+import Login from 'pages/login/login';
+import Profile from 'pages/profile/profile';
+import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+import { themeSettings } from './theme';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />
-  },
-  {
-    path: "/profile/:username",
-    element: <Profile />
-  },
-  {
-    path: "/login",
-    element: <Login />
-  },
-  {
-    path: "/register",
-    element: <Register />
-  },
-]);
 
-const App = () => {
+function App() {
+  const mode = useSelector(state => state.mode);
+  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
+  const isAuth = Boolean(useSelector(state => state.token));
+
   return (
-    <RouterProvider router={router} />
-  )
+    <div className="app">
+      <Router>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Routes>
+            <Route
+              path='/'
+              element={<Login />} />
+            <Route
+              path='/home'
+              element={isAuth ? <Home /> : <Navigate to="/" />} />
+            <Route
+              path='/profile/:userId'
+              element={isAuth ? <Profile /> : <Navigate to="/" />} />
+          </Routes>
+        </ThemeProvider>
+      </Router>
+    </div>
+  );
 }
-export default App
+
+export default App;
