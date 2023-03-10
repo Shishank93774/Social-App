@@ -38,18 +38,18 @@ const MyPostWidget = ({ profileImg }) => {
   const medium = palette.neutral.medium;
 
   const handlePost = async () => {
-    const formdata = new FormData();
-    formdata.append("userId", _id);
-    formdata.append("description", post);
+    const formData = new FormData();
+    formData.append("userId", _id);
+    formData.append("desc", post);
     if (image) {
-      formdata.append("picture", image);
-      formdata.append("profileImg", image.name);
+      formData.append("picture", image);
+      formData.append("postImg", image.name);
     }
 
     const response = await fetch(`http://localhost:3001/posts`, {
       method: "POST",
       headers: { Authorization: `Bearer ${token}` },
-      body: formdata,
+      body: formData,
     });
     const posts = await response.json();
     dispatch(setPosts({ posts }));

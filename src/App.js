@@ -4,9 +4,9 @@ import {
   Navigate,
   Route
 } from 'react-router-dom';
-import Home from 'pages/home/home';
-import Login from 'pages/login/login';
-import Profile from 'pages/profile/profile';
+import Home from 'pages/home/Home';
+import Login from 'pages/login/Login';
+import Profile from 'pages/profile/Profile';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { CssBaseline, ThemeProvider } from '@mui/material';
