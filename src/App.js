@@ -7,6 +7,7 @@ import {
 import Home from 'pages/home/Home';
 import Login from 'pages/login/Login';
 import Profile from 'pages/profile/Profile';
+import Chat from 'pages/chat/Chat';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { CssBaseline, ThemeProvider } from '@mui/material';
@@ -34,6 +35,9 @@ function App() {
             <Route
               path='/profile/:userId'
               element={isAuth ? <Profile /> : <Navigate to="/" />} />
+            <Route
+              path='/chat'
+              element={isAuth ? <Chat /> : <Navigate to="/" />} />
           </Routes>
         </ThemeProvider>
       </Router>

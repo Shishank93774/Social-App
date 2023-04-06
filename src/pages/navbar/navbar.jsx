@@ -22,7 +22,7 @@ import {
 } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux/es/exports";
 import { setMode, setLogout } from "state";
-import { useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import FlexBetween from "components/FlexBetween";
 
 const Navbar = () => {
@@ -93,14 +93,19 @@ const Navbar = () => {
               />
             )}
           </IconButton>
-          <Message
-            sx={{
-              fontSize: "25px",
-              "&:hover": {
-                cursor: "pointer",
-              },
-            }}
-          />
+          <Link
+            to="../chat"
+          >
+            <Message
+              sx={{
+                color: dark,
+                fontSize: "25px",
+                "&:hover": {
+                  cursor: "pointer",
+                },
+              }}
+            />
+          </Link>
           <Notifications
             sx={{
               fontSize: "25px",
